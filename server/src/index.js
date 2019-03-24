@@ -4,7 +4,7 @@ const renderToString = require('react-dom/server').renderToString;
 
 const Home = require('./client/components/Home').default;
 
-const app = express;
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
