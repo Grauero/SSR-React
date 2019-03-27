@@ -1,4 +1,6 @@
 /* eslint-disable no-console */
+
+import 'babel-polyfill';
 import express from 'express';
 
 import renderer from './utils/renderer';
