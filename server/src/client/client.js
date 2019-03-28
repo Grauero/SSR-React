@@ -10,7 +10,11 @@ import { Provider } from 'react-redux';
 import Routes from './Routes';
 import rootReducer from './reducers';
 
-const store = createStore(rootReducer, {}, applyMiddleware(thunk));
+const store = createStore(
+  rootReducer,
+  window.INITIAL_STATE,
+  applyMiddleware(thunk)
+);
 const routes = renderRoutes(Routes);
 
 const app = (
