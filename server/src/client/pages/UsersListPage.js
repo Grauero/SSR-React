@@ -37,8 +37,10 @@ const mapStateToProps = state => ({ users: state.users });
 // function for loading all required data without actual render
 const loadData = store => store.dispatch(fetchUsers());
 
-export { loadData };
-export default connect(
-  mapStateToProps,
-  { fetchUsers }
-)(UsersList);
+export default {
+  loadData,
+  component: connect(
+    mapStateToProps,
+    { fetchUsers }
+  )(UsersList)
+};
