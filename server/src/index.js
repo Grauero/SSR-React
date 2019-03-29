@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
-
-import 'babel-polyfill';
 import express from 'express';
+import proxy from 'express-http-proxy';
 import { matchRoutes } from 'react-router-config';
 
 import renderer from './utils/renderer';
@@ -11,10 +10,20 @@ import Routes from './client/Routes';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// proxy all /api routes to the API server
+app.use(
+  '/api',
+  proxy('http://react-ssr-api.herokuapp.com', {
+    proxyReqOptDecorator(options) {
+      options.headers['x-forwarded-host'] = 'localhost:3000';
+      return options;
+    }
+  })
+);
 app.use(express.static('public'));
 
 app.get('*', (req, res) => {
-  const store = createStore();
+  const store = createStore(req);
   const matchedRoutes = matchRoutes(Routes, req.path);
 
   // fetch all required data from matched components

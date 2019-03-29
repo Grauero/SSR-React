@@ -7,8 +7,18 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           presets: [
-            'react',
-            ['env', { targets: { browsers: ['last 2 versions'] } }]
+            '@babel/preset-react',
+            [
+              '@babel/preset-env',
+              { targets: { browsers: ['last 2 versions'] } }
+            ]
+          ],
+          plugins: [
+            [
+              '@babel/plugin-proposal-object-rest-spread',
+              { loose: true, useBuiltIns: true }
+            ],
+            '@babel/transform-runtime'
           ]
         }
       }
