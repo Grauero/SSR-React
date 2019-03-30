@@ -1,5 +1,9 @@
 import React from 'react';
 
-const Home = () => <div>Home component</div>;
+const Home = () => (
+  <div className="center-align" style={{ marginTop: '200px' }}>
+    <h3>Home component</h3>
+  </div>
+);
 
 export default { component: Home };
