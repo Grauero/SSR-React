@@ -17,3 +17,13 @@ export const fetchCurrentUser = () => async (dispatch, _, axiosInstance) => {
     payload: data
   });
 };
+
+export const FETCH_ADMINS = 'FETCH_ADMINS';
+export const fetchAdmins = () => async (dispatch, _, axiosInstance) => {
+  const { data } = await axiosInstance.get('/admins');
+
+  dispatch({
+    type: FETCH_ADMINS,
+    payload: data
+  });
+};

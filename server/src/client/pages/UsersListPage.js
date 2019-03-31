@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { fetchUsers } from '../actions';
+import { fetchUsers } from '../store/actions';
 
 class UsersList extends Component {
   componentDidMount() {
@@ -20,7 +20,7 @@ class UsersList extends Component {
 
     return (
       <div>
-        List of users:
+        <h3>List of users:</h3>
         <ul>{users}</ul>
       </div>
     );

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { renderRoutes } from 'react-router-config';
 
 import Header from './components/Header';
-import { fetchCurrentUser } from './actions';
+import { fetchCurrentUser } from './store/actions';
 
 const App = ({ route }) => {
   const routes = renderRoutes(route.routes);
