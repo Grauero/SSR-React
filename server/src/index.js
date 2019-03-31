@@ -33,7 +33,15 @@ app.get('*', (req, res) => {
 
   // wait when all promises are resolved and then render components on server
   // store now contains all required data
-  Promise.all(responsePromises).then(() => res.send(renderer(req, store)));
+  Promise.all(responsePromises).then(() => {
+    // context object for catching 404 errors
+    const context = {};
+    const content = renderer(req, store, context);
+
+    context.notFound
+      ? res.status(404).send(content)
+      : res.status(200).send(content);
+  });
 });
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
