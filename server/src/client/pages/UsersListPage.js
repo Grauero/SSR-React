@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import { fetchUsers } from '../store/actions';
 
@@ -15,11 +16,22 @@ class UsersList extends Component {
     });
   }
 
+  renderHead() {
+    return (
+      <Helmet>
+        <title>{`${this.props.users.length} Users Loaded`}</title>
+        <meta property="og:title" content="Users App" />
+      </Helmet>
+    );
+  }
+
   render() {
     const users = this.renderUsers();
+    const head = this.renderHead();
 
     return (
       <div>
+        {head}
         <h3>List of users:</h3>
         <ul>{users}</ul>
       </div>
