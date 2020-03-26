@@ -27,7 +27,7 @@
     "express": "^4.16.4",
     "express-http-proxy": "1.0.6",
     "history": "^4.7.2",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "nodemon": "^1.18.10",
     "npm-run-all": "4.1.1",
     "react": "^16.8.5",
